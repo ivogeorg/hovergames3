@@ -51,7 +51,7 @@ Drone plans a route for the rover "to the agricultural field target" and guides 
 9. Communication between rover and drone?
    1. Set up a WiFi link between the two vehicles.
    2. _How can the two vehicles get on the same PX4 uORB network?_
-   3. _Is this where ROS2 
+   3. _Is this where ROS2 becomes inevitable?_
 
 ## Development plan: applications
 
@@ -63,11 +63,26 @@ Drone plans a route for the rover "to the agricultural field target" and guides 
    2. Fly above a ground path.
       1. _How to define it manually?_
       2. _How can the drone, given a destination, use vision and terrain understanding to plan the path for the rover?_
-      3. 
    3. Get in the air and find the rover on the ground.
       1. _Should there be a beacon on the rover for the drone to home in on? Are there other ways for give the drone a heuristic for locating the rover, based on the rover's normal radio activity?_
       2. Segment the view from the drone camera and label the rover.
    4. Follow the rover.
       1. Borrow from the Follow-Me application.
-   5. Guide the rover along a path.
-      1. Regardless of how the path is generated...
+   5. Create a common 3D AR virtual space for the two camera views.
+      1. This should be a moving box strictly corresponing to the environment, and be used for high-resolution planning.
+      2. The two cameras should show it overlayed on their video streams and should continously update and fine-tune to ensure maximum correspondence of the virtual space to the physical space, including the locations of the two vehicles.
+   7. Guide the rover along a path.
+      1. Regardless of how the path is generated, drone-planned or geo-labeled, guide the rover along it.
+      2. Display the path overlayed in the drone camera view in QGroundControl.
+      3. Create AR markers "in front of" the rover's camera view to follow the path. _How will the virtual space overlays be communicated and shared between the vehicles? This may need to be borrowed from multi-player game development and AR applications._
+   8. Dynamic path replanning to avoid obstacles.
+      1. Cars when crossing the street.
+      2. Puddles and ice patches.
+      3. Fallen branches and other debris.
+      4. Other obstacles defined by the criterion that the rover cannot go through (e.g. a space between two slats of a bridge that may trap one of the wheels).
+   9. Define the plot of land in the common virtual space.
+      1. The drone should define the boundaries, while the rover should organize it into rows and "plant" position with sufficient spacing for rover navigation.
+   10. Virtual (partial digital-twin) multi-tool (multi-applicator) robotic arm for the rover.
+       1. Possible tools/applicators are: liquids (water, pesticide, fertilizer), tools (high-zoom camera, sampler), physical (environmental sensors, particulate sensors).
+   12. Work the "plants" in the plot.
+       1. Plan a trajectory including all the "plants" (objects in the shared virtual space) and "work" on each one.
