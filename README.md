@@ -81,9 +81,11 @@ Drone plans a route for the rover "to the agricultural field target" and guides 
       3. Fallen branches and other debris.
       4. Other obstacles defined by the criterion that the rover cannot go through (e.g. a space between two slats of a bridge that may trap one of the wheels).
       5. Avoid people. _Need to add a forward-looking camera to the drone and train the drone to pick its flight path based on what it "sees". **This is a an application in itself!**_
-   9. Define the plot of land in the common virtual space.
+
+2. Rover performs agricultural mission on the site/plot it has been led to.
+   1. Define the plot of land in the common virtual space.
       1. The drone should define the boundaries, while the rover should organize it into rows and "plant" position with sufficient spacing for rover navigation.
-   10. Virtual (partial digital-twin) multi-tool (multi-applicator) robotic arm for the rover.
+   2. Virtual (partial digital-twin) multi-tool (multi-applicator) robotic arm for the rover.
        1. Possible tools/applicators are: liquids (water, pesticide, fertilizer), tools (high-zoom camera, sampler), physical (environmental sensors, particulate sensors).
-   12. Work the "plants" in the plot.
+   3. Work the "plants" in the plot.
        1. Plan a trajectory including all the "plants" (objects in the shared virtual space) and "work" on each one.
